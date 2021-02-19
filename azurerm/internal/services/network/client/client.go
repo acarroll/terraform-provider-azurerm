@@ -1,7 +1,7 @@
 package client
 
 import (
-	"github.com/Azure/azure-sdk-for-go/services/network/mgmt/2020-05-01/network"
+	"github.com/Azure/azure-sdk-for-go/services/network/mgmt/2020-07-01/network"
 	"github.com/terraform-providers/terraform-provider-azurerm/azurerm/internal/common"
 )
 
@@ -16,6 +16,7 @@ type Client struct {
 	ExpressRouteGatewaysClient             *network.ExpressRouteGatewaysClient
 	ExpressRoutePeeringsClient             *network.ExpressRouteCircuitPeeringsClient
 	HubRouteTableClient                    *network.HubRouteTablesClient
+	HubRouteTableV2Client                  *network.VirtualHubRouteTableV2sClient
 	HubVirtualNetworkConnectionClient      *network.HubVirtualNetworkConnectionsClient
 	InterfacesClient                       *network.InterfacesClient
 	IPGroupsClient                         *network.IPGroupsClient
@@ -87,6 +88,9 @@ func NewClient(o *common.ClientOptions) *Client {
 
 	HubRouteTableClient := network.NewHubRouteTablesClientWithBaseURI(o.ResourceManagerEndpoint, o.SubscriptionId)
 	o.ConfigureClient(&HubRouteTableClient.Client, o.ResourceManagerAuthorizer)
+
+	HubRouteTableV2Client := network.NewVirtualHubRouteTableV2sClientWithBaseURI(o.ResourceManagerEndpoint, o.SubscriptionId)
+	o.ConfigureClient(&HubRouteTableV2Client.Client, o.ResourceManagerAuthorizer)
 
 	HubVirtualNetworkConnectionClient := network.NewHubVirtualNetworkConnectionsClientWithBaseURI(o.ResourceManagerEndpoint, o.SubscriptionId)
 	o.ConfigureClient(&HubVirtualNetworkConnectionClient.Client, o.ResourceManagerAuthorizer)
@@ -216,6 +220,7 @@ func NewClient(o *common.ClientOptions) *Client {
 		ExpressRouteGatewaysClient:             &ExpressRouteGatewaysClient,
 		ExpressRoutePeeringsClient:             &ExpressRoutePeeringsClient,
 		HubRouteTableClient:                    &HubRouteTableClient,
+		HubRouteTableV2Client:                  &HubRouteTableV2Client,
 		HubVirtualNetworkConnectionClient:      &HubVirtualNetworkConnectionClient,
 		InterfacesClient:                       &InterfacesClient,
 		IPGroupsClient:                         &IpGroupsClient,

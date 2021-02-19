@@ -8,6 +8,7 @@ require (
 	github.com/Azure/go-autorest/autorest/validation v0.3.1
 	github.com/btubbs/datetime v0.1.0
 	github.com/davecgh/go-spew v1.1.1
+	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
 	github.com/google/go-cmp v0.5.0
 	github.com/google/uuid v1.1.1
 	github.com/hashicorp/go-azure-helpers v0.13.0
@@ -25,6 +26,7 @@ require (
 	github.com/tombuildsstuff/giovanni v0.15.1
 	golang.org/x/crypto v0.0.0-20201221181555-eec23a3978ad
 	golang.org/x/net v0.0.0-20200707034311-ab3426394381
+	google.golang.org/appengine v1.6.6 // indirect
 	gopkg.in/yaml.v2 v2.2.4
 )
 
